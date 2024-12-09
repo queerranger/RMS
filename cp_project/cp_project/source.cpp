@@ -4,7 +4,7 @@ using namespace std;
 void menu();
 void signup();
 void order_menu();
-
+//restaurant management system
 
 int main() {
 	signup();
@@ -235,5 +235,5 @@ void order_menu()
 			cout << i + 1 << ". " << cart[i] << "    Rs." <<cart_prices[i] << endl;
 		}
 	}
-
+	
 }
