@@ -235,5 +235,5 @@ void order_menu()
 			cout << i + 1 << ". " << cart[i] << "    Rs." <<cart_prices[i] << endl;
 		}
 	}
-	
+	//good
 }
