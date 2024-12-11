@@ -1,57 +1,59 @@
 #include <iostream>
 #include <string.h>
+#include <ctime>
+#include <cstdlib>
 using namespace std;
 void menu();
 void signup();
-void order_menu();
+int order_menu();
+void billing(int x);
+
 //restaurant management system
 
 int main() {
+	int total;
 	signup();
 	menu();
-	order_menu();
+	total = order_menu();
+	billing(total);
 }
 
 void signup() {
 
-	cout << "press 1 to signup and 2 to login" << endl;
+	srand(time(0));
 
-	int num;
-	int enteredpassword;
-	int password = 12345;
-	char usrname;
-	int pass;
-	cin >> num;
+	
+	int enteredpassword=rand()%1000;
+	int password=2005;
+	string usrname = "ranger123";
+	string logname = "unknown";
+	
+	
+	
 
-	switch (num) {
-
-	case 1: {
-		cout << "Welcoe to Signup\n";
-		cout << "Enter username:";
-		cin >> usrname;
-		cout << "\nPassword:";
-		cin >> pass;
-		password = pass;
-		break;
-	}
-
-	case 2:
 		do {
-			cout << "Enter the username" << endl;
-			cin >> usrname;
-			cout << "Enter your password" << endl;
-			cin >> enteredpassword;
-			if (enteredpassword == password) {
-				cout << "login successfully" << endl;
-				break;
+			cout << "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Enter credentials to Login//////////////////////////" << endl;
+			cout << "Enter username:";
+			cin >> logname;
+			if (logname == usrname)
+			{
+				cout << "Enter password: ";
+				cin >> enteredpassword;
+				if (enteredpassword == password)
+				{
+					cout << "Login successful";
+				}
+				else
+				{
+					cout << "try again\n";
+				}
 			}
 			else {
-				cout << "invalid" << endl;
+				cout << "\nWrong username\n";
 			}
-		} while (enteredpassword != password);
-
-	}
-
+		} while ((enteredpassword != password)||(logname!=usrname));
+		
+	
 }
 
 void menu()
@@ -70,33 +72,32 @@ void menu()
 	int mainc_price[3] = { 100,200,300 };
 	int dsrt_price[2] = { 100,200 };
 
-	cout << "\n         Appetizers          \n";
+	cout << "\n\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Appetizers//////////////////////////\n";
 	for (int i = 0; i < 3; i++)
 	{
-		cout << i+1 << ". " << appetizer[i] << "------->Rs." << apt_price[i] << endl;
+		cout <<endl<< i+1 << ". " << appetizer[i] << "------->Rs." << apt_price[i] << endl;
 }
-	cout << "\n         Soups          \n";
+	cout << "\n\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Soups//////////////////////////\n";
 	for (int i = 0; i < 3; i++)
 	{
-		cout << i+1 << ". " << soups[i] << "------->Rs." << soup_price[i] << endl;
+		cout << endl << i+1 << ". " << soups[i] << "------->Rs." << soup_price[i] << endl;
 	}
-
-	cout << "\n         main course          \n";
+	cout << "\n\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\main course//////////////////////////\n";
 	for (int i = 0; i < 3; i++)
 	{
-		cout << i+1 << ". " << maincourse[i] << "------->Rs." << mainc_price[i] << endl;
+		cout << endl << i+1 << ". " << maincourse[i] << "------->Rs." << mainc_price[i] << endl;
 	}
 
-	cout << "\n         Desserts          \n";
+	cout << "\n\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Desserts//////////////////////////\n";
 	for (int i = 0; i < 2; i++)
 	{
-		cout << i+1 << ". " << desserts[i] << "------->Rs." << dsrt_price[i] << endl;
+		cout << endl << i+1 << ". " << desserts[i] << "------->Rs." << dsrt_price[i] << endl;
 	}
 	
 
 
 }
-void order_menu()
+int order_menu()
 {
 	string cart[20];
 	int cart_prices[20];
@@ -121,7 +122,8 @@ void order_menu()
 	int mainc_price[3] = { 100,200,300 };
 	int dsrt_price[2] = { 100,200 };
 	//menu options
-	label:
+label:
+	cout << "\n\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\HOW TO USE//////////////////////////\n";
 	cout << "Press A to order from Appetizers\n";
 	cout << "Press S to order from Soups\n";
 	cout << "Press M to order from Maincourse\n";
@@ -133,7 +135,11 @@ void order_menu()
 	switch (option)
 	{
 	case 'A':
-		
+		cout << "\n\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Appetizers//////////////////////////\n";
+		for (int i = 0; i < 3; i++)
+		{
+			cout << endl << i + 1 << ". " << appetizer[i] << "------->Rs." << apt_price[i] << endl;
+		}
 		do {
 			cout << "Enter index No. of dish: ";
 			cin >> index;
@@ -143,7 +149,7 @@ void order_menu()
 			cart[count] = appetizer[index - 1];
 			cart_prices[count] = apt_price[index - 1];
 				count++;
-				cout << "Selected items:\n";
+				cout << "\ncart:\n";
 				for (int i = 0; i < count; i++)
 				{
 					cout << cart[i] << endl;
@@ -155,6 +161,11 @@ void order_menu()
 		} while (ap_opt != 'N');
 		break;
 	case 'S':
+		cout << "\n\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Soups//////////////////////////\n";
+		for (int i = 0; i < 3; i++)
+		{
+			cout << endl << i + 1 << ". " << soups[i] << "------->Rs." << soup_price[i] << endl;
+		}
 		do {
 			cout << "Enter index No. of dish: ";
 			cin >> index;
@@ -164,7 +175,7 @@ void order_menu()
 			cart[count] = soups[index - 1];
 			cart_prices[count] = soup_price[index - 1];
 			count++;
-			cout << "Selected items:\n";
+			cout << "\ncart:\n";
 			for (int i = 0; i < count; i++)
 			{
 				cout << cart[i] << endl;
@@ -177,6 +188,11 @@ void order_menu()
 		break;
 
 	case 'M':
+		cout << "\n\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\main course//////////////////////////\n";
+		for (int i = 0; i < 3; i++)
+		{
+			cout << endl << i + 1 << ". " << maincourse[i] << "------->Rs." << mainc_price[i] << endl;
+		}
 		do {
 			cout << "Enter index No. of dish: ";
 			cin >> index;
@@ -186,7 +202,7 @@ void order_menu()
 			cart[count] = maincourse[index - 1];
 			cart_prices[count] = mainc_price[index - 1];
 			count++;
-			cout << "Selected items:\n";
+			cout << "\ncart:\n";
 			for (int i = 0; i < count; i++)
 			{
 				cout << cart[i] << endl;
@@ -199,6 +215,11 @@ void order_menu()
 		break;
 
 	case 'D':
+		cout << "\n\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Desserts//////////////////////////\n";
+		for (int i = 0; i < 2; i++)
+		{
+			cout << endl << i + 1 << ". " << desserts[i] << "------->Rs." << dsrt_price[i] << endl;
+		}
 		do {
 			cout << "Enter index No. of dish: ";
 			cin >> index;
@@ -208,7 +229,7 @@ void order_menu()
 			cart[count] = desserts[index - 1];
 			cart_prices[count] = dsrt_price[index - 1];
 			count++;
-			cout << "Selected items:\n";
+			cout << "\ncart:\n";
 			for (int i = 0; i < count; i++)
 			{
 				cout << cart[i] << endl;
@@ -224,8 +245,10 @@ void order_menu()
 	cout << "Do you want to order anything else? Y/N\n";
 	cin >> optionn;
 	
-	if (optionn == 'Y')
-	goto label;
+	if (optionn == 'Y') {
+		menu();
+		goto label;
+	}
 	
 	else
 	{
@@ -235,5 +258,37 @@ void order_menu()
 			cout << i + 1 << ". " << cart[i] << "    Rs." <<cart_prices[i] << endl;
 		}
 	}
-	//good
+	char confirm;
+	cout << "\nDo you want to confirm order? Y/N\n";
+	cin >> confirm;
+	int total = 0;
+	double gst;
+	if (confirm == 'Y')
+	{
+		for (int i = 0; i < count;i++)
+		{
+			total += cart_prices[i];
+			cout << cart[i] << "  Rs." << cart_prices[i] << endl;
+		}
+		return total;
+		
+	}
+	else if (confirm == 'N')
+	{
+		cout << "\n\nThank you for visiting";
+	}
+	else
+		cout << "\n\nINVALID OPTION";
+	
 }
+
+void billing(int x)
+{
+	int total = x;
+	cout << "\n\n BILL";
+	cout << "\nTotal: " << total;
+	double gst = total * 0.15;
+	double total_w_tax = total + gst;
+	cout << endl << "Total + %15: " << total_w_tax;
+}
+

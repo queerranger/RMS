@@ -1,2 +1,5 @@
 ﻿  source.cpp
-  cp_project.vcxproj -> C:\Users\Mustafa\source\repos\cp_project\x64\Debug\cp_project.exe
+C:\Users\Mustafa\source\repos\RMS\cp_project\cp_project\source.cpp(23,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Mustafa\source\repos\RMS\cp_project\cp_project\source.cpp(265,9): warning C4101: 'gst': unreferenced local variable
+C:\Users\Mustafa\source\repos\RMS\cp_project\cp_project\source.cpp(283,1): warning C4715: 'order_menu': not all control paths return a value
+  cp_project.vcxproj -> C:\Users\Mustafa\source\repos\RMS\cp_project\x64\Debug\cp_project.exe
