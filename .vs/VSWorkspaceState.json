@@ -2,7 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\cp_project",
-    "\\cp_project\\cp_project"
+    "\\cp_project\\cp_project",
+    "\\cp_project\\x64"
   ],
   "SelectedNode": "\\cp_project\\cp_project\\source.cpp",
   "PreviewInSolutionExplorer": false
