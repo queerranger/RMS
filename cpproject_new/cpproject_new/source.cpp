@@ -42,34 +42,68 @@ void login() {
 		if (ent_user != username || ent_pass != pass)
 			cout << "\nWrong username or pass";
 	} while (ent_user != username || ent_pass != pass);*/
-	ofstream obj;
+	string readname[20];
+	string readpass[20];
+	bool test = true;
+	string username;
+	string password;
+	fstream obj;
 	switch (opt) {
 	case 1:
 		cout << "Welcome to signup\n";
 		obj.open("accounts.txt", ios::app);
 		if (obj.is_open()) {
-			string username;
-			string password;
+			
 
 			cout << "Enter username: ";
 			cin >> username;
 			cout << "Enter password: ";
 			cin >> password;
-
-			obj << username << endl;
-			obj << password << endl;
 			obj.close();
+			obj.open("accounts.txt", ios::in);
+			for (int i = 0; i < 20;i++)
+			{
+				obj << readname[i];
+				if (username == readname[i]) {
+					cout << "\nusername taken already.";
+					test = false;
+					break;
+				}
+			}
+			for (int i = 0; i < 20;i++)
+			{
+				obj << readpass[i];
+				if (password == readpass[i]) {
+					cout << "\nusername or password taken already.";
+					test = false;
+					break;
+				}
+			}
+			obj.close();
+			
+			if(test == true)
+			{
+				obj.open("accounts.txt", ios::app);
+				obj << username << endl;
+				obj << password << endl;
+				obj.close();
+			}
 		}
 		else
 			cout << "Error: couldn't access file.\n";
 		system("cls");
 
 	case 2:
-		int counter = 0;
-		do{cout << "Enter credentials.\n";
+		int counter1 = 0;
+		int counter2 = 0;
+		string fileusername;
+		string filepass;
 		string ent_usr;
 		string ent_pass;
-		string array[20];
+		do{cout << "Enter credentials.\n";
+		
+		string arrusernames[50];
+		string arrpasses[50];
 		ifstream file;
 		file.open("accounts.txt");
 		cout << "Enter username: ";
@@ -80,16 +114,25 @@ void login() {
 		if (file.is_open())
 		{
 			for (int i = 0;i < 20;i++) {
-				file >> array[i];
-				if (ent_usr == array[i])
-					counter++;
+				file >> arrusernames[i];
 				
-				if (ent_pass == array[i])
-					counter++;
-				if (counter == 2)
+				if (ent_usr == arrusernames[i])
+				{
+					fileusername = arrusernames[i];
 					break;
+					
+				}
 			}
-			if (counter == 2)
+				for (int i = 0;i < 20;i++) {
+					file >> arrpasses[i];
+				if (ent_pass == arrpasses[i])
+				{
+					filepass = arrpasses[i];
+					break;
+					
+				}
+			}
+			if (filepass==ent_pass && fileusername == ent_usr)
 				cout << "Login successful.\n";
 			else
 				cout << "Wrong credentials.\n";
@@ -99,14 +142,10 @@ void login() {
 		else
 			cout << "Error\n";
 
-		} while (counter != 2);
+		} while (filepass != ent_pass && fileusername != ent_usr);
 				break;
 			
 		}
-
-
-
-
 
 }
 
