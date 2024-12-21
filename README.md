@@ -1,2 +1,2 @@
 # RMS
- Restaurant management system
+ Restaurant management system made by Me and two other mates.
