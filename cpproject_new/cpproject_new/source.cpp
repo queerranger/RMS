@@ -1,9 +1,10 @@
 #include <iostream>
-#include <string.h>
+#include <string>
 #include <iomanip>
 #include <cstdlib>
 #include <fstream>
-using namespace std;
+#include <ctime>
+using namespace	std;
 void menu_order_bill();
 void login();
 void billing();
@@ -22,8 +23,119 @@ int main() {
 }
 
 void login() {
-	
-	string username = "ranger123";
+	int num;
+	int newpass;
+	int option;
+	char goback;
+	int key;
+	char option2;
+	do {
+		cout << "==================Welcome To RESTAURANT MANAGEMENT SYSTEM==================\n";
+	backlabel:
+		cout << "||           press 1 to Generate a key or 2 to login with key            ||\n";
+
+		cin >> num;
+		
+	} while (num != 1&&num != 2);
+	ofstream file;
+	ifstream file2;
+	switch (num) {
+	case 1:
+		srand(time(0));
+		key = rand() % 9999;
+		system("cls");
+	cout << "===========================Generate key Press[1]===========================\n";
+		cin >> option;
+		if(option==1){
+			cout << "key: " << key << " (Make sure you remember the key as it will be required for login)";
+			file.open("keys.txt", ios::app);
+			file << key<< endl;
+			file.close();
+			cout << "\nProceed to signup? (Y/N): ";
+			cin >> option2;
+			if (option2 == 'n' || option2 == 'N')
+				goto backlabel;
+		}
+		else {
+			cout << "Press b to go back";
+			cin >> goback;
+			if (goback == 'b' || goback == 'B')
+				goto backlabel;
+		}
+		
+
+	case 2:
+		system("cls");
+		char approve = NULL;
+		string filekey;
+
+		string key_entered;
+		cout << "============================L O G I N============================\n";
+		do{
+			if (file2.is_open())
+				file2.close();
+		/*label:*/	cout << "\nEnter key: ";
+		cin >> key_entered;
+
+
+		file2.open("keys.txt");
+
+		if (file2.is_open())
+		{
+			while (file2 >> filekey)
+			{
+				if (key_entered == filekey)
+				{
+					cout << "\nSuccess!";
+					while (approve != 'y')
+					{
+						cout << " Press y to proceed:\n";
+						cin >> approve;
+						if (approve == 'y')
+							break;
+					}break;
+
+
+				}
+				else
+				{
+					cout << "\nChecking";
+
+				}
+			}
+			if (key_entered != filekey)
+				cout << "\nWrong key\n";
+		}
+		else
+			cout << "Couldn't open file";
+		} while (key_entered != filekey);
+
+		/*do {
+
+			login >> filepassword;
+			getline(login, filepassword);
+			if (password == filepassword) {
+				cout << "\nsuccessfull\n" << endl;
+				cout << "Do you want to go further:\n";
+				cin >> approve;
+
+				login.close();
+				break;
+
+			}
+
+
+			else {
+				cout << "invalid\n";
+				goto label;
+			}
+
+
+		} while (password != filepassword);
+	}*/
+
+
+	/*string username = "ranger123";
 	int pass = 12345;
 	string ent_user;
 	int ent_pass;
@@ -35,15 +147,13 @@ void login() {
 		cin >> ent_pass;
 		if (ent_user != username || ent_pass != pass)
 			cout << "\nWrong username or pass";
-	} while (ent_user != username || ent_pass != pass);
+	} while (ent_user != username || ent_pass != pass);*/
 
 
 
+	}
 }
-	
-
 void menu_order_bill()
-
 {//menu items
 	string menu_items[4] = { "[Appetizers]","[Soups]", "[Maincourse]","[Desserts]" };
 	string appetizer[3] = { "[Garlic Bread]","[Chicken Wings]","[Nachos with cheese]" };
