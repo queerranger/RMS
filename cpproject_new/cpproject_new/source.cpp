@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <fstream>
 using namespace std;
-void menu();
+void menu_order_bill();
 void login();
 void billing();
 void order();
@@ -18,18 +18,12 @@ int main() {
 
 	login();
 	system("cls");
-	menu();
+	menu_order_bill();
 }
 
 void login() {
 	
-	
-	int opt;
-	cout << "Press [1] to signup\nPress [2] to login\n";
-	cin >> opt;
-	cin.ignore();
-	system("cls");
-	/*string username = "ranger123";
+	string username = "ranger123";
 	int pass = 12345;
 	string ent_user;
 	int ent_pass;
@@ -41,115 +35,14 @@ void login() {
 		cin >> ent_pass;
 		if (ent_user != username || ent_pass != pass)
 			cout << "\nWrong username or pass";
-	} while (ent_user != username || ent_pass != pass);*/
-	string readname[20];
-	string readpass[20];
-	bool test = true;
-	string username;
-	string password;
-	fstream obj;
-	switch (opt) {
-	case 1:
-		cout << "Welcome to signup\n";
-		obj.open("accounts.txt", ios::app);
-		if (obj.is_open()) {
-			
+	} while (ent_user != username || ent_pass != pass);
 
-			cout << "Enter username: ";
-			cin >> username;
-			cout << "Enter password: ";
-			cin >> password;
-			obj.close();
-			obj.open("accounts.txt", ios::in);
-			for (int i = 0; i < 20;i++)
-			{
-				obj << readname[i];
-				if (username == readname[i]) {
-					cout << "\nusername taken already.";
-					test = false;
-					break;
-				}
-			}
-			for (int i = 0; i < 20;i++)
-			{
-				obj << readpass[i];
-				if (password == readpass[i]) {
-					cout << "\nusername or password taken already.";
-					test = false;
-					break;
-				}
-			}
-			obj.close();
-			
-			if(test == true)
-			{
-				obj.open("accounts.txt", ios::app);
-				obj << username << endl;
-				obj << password << endl;
-				obj.close();
-			}
-		}
-		else
-			cout << "Error: couldn't access file.\n";
-		system("cls");
 
-	case 2:
-		int counter1 = 0;
-		int counter2 = 0;
-		string fileusername;
-		string filepass;
-		string ent_usr;
-		string ent_pass;
-		do{cout << "Enter credentials.\n";
-		
-		string arrusernames[50];
-		string arrpasses[50];
-		ifstream file;
-		file.open("accounts.txt");
-		cout << "Enter username: ";
-		cin >> ent_usr;
-		cout << "Enter password: ";
-		cin >> ent_pass;
-		
-		if (file.is_open())
-		{
-			for (int i = 0;i < 20;i++) {
-				file >> arrusernames[i];
-				
-				if (ent_usr == arrusernames[i])
-				{
-					fileusername = arrusernames[i];
-					break;
-					
-				}
-			}
-				for (int i = 0;i < 20;i++) {
-					file >> arrpasses[i];
-				if (ent_pass == arrpasses[i])
-				{
-					filepass = arrpasses[i];
-					break;
-					
-				}
-			}
-			if (filepass==ent_pass && fileusername == ent_usr)
-				cout << "Login successful.\n";
-			else
-				cout << "Wrong credentials.\n";
-			file.close();
-		}
-
-		else
-			cout << "Error\n";
-
-		} while (filepass != ent_pass && fileusername != ent_usr);
-				break;
-			
-		}
 
 }
+	
 
-void menu()
+void menu_order_bill()
 
 {//menu items
 	string menu_items[4] = { "[Appetizers]","[Soups]", "[Maincourse]","[Desserts]" };
@@ -182,7 +75,7 @@ label:
 
 			cout << appetizer[i] << "    Rs." << apt_price[i] << "(Press [" << i + 1 << "] to order)";
 			cout << endl;
-
+			
 		}
 		char option_a;
 		do {
@@ -191,7 +84,7 @@ label:
 			orders[TotalOrders] = appetizer[num - 1];
 			order_prices[TotalOrders] = apt_price[num - 1];
 			TotalOrders++;
-			bill += 100;
+			bill += apt_price[num - 1];
 			cout << "Do you want to order more from appetizers? Y/N: ";
 			cin >> option_a;
 			if (option_a == 'N')
@@ -216,7 +109,7 @@ label:
 			orders[TotalOrders] = appetizer[num - 1];
 			order_prices[TotalOrders] = apt_price[num - 1];
 			TotalOrders++;
-			bill += 100;
+			bill += apt_price[num - 1];
 			cout << "Do you want to order more from appetizers? Y/N: ";
 			cin >> option_A;
 			if (option_A == 'N')
@@ -239,7 +132,7 @@ label:
 			orders[TotalOrders] = soups[num - 1];
 			order_prices[TotalOrders] = soup_price[num - 1];
 			TotalOrders++;
-			bill += 100;
+			bill += soup_price[num - 1];
 			cout << "Do you want to order more from maincourse? Y/N: ";
 			cin >> option_s;
 			if (option_s == 'N')
@@ -264,7 +157,7 @@ label:
 			orders[TotalOrders] = soups[num - 1];
 			order_prices[TotalOrders] = soup_price[num - 1];
 			TotalOrders++;
-			bill += 100;
+			bill +=  soup_price[num - 1];
 			cout << "Do you want to order more from maincourse? Y/N: ";
 			cin >> option_S;
 			if (option_S == 'N')
@@ -292,7 +185,7 @@ label:
 			orders[TotalOrders] = maincourse[num - 1];
 			order_prices[TotalOrders] = { mainc_price[num - 1] };
 			TotalOrders++;
-			bill += 100;
+			bill += mainc_price[num - 1];
 			cout << "Do you want to order more from maincourse? Y/N: ";
 			cin >> option_m;
 			if (option_m == 'N')
@@ -318,7 +211,7 @@ label:
 			orders[TotalOrders] = maincourse[num - 1];
 			order_prices[TotalOrders] = { mainc_price[num - 1] };
 			TotalOrders++;
-			bill += 100;
+			bill += mainc_price[num - 1];
 			cout << "Do you want to order more from maincourse? Y/N: ";
 			cin >> option_M;
 			if (option_M == 'N')
@@ -343,7 +236,7 @@ label:
 			orders[TotalOrders] = desserts[num - 1];
 			order_prices[TotalOrders] = dsrt_price[num - 1];
 			TotalOrders++;
-			bill += 100;
+			bill += dsrt_price[num - 1];
 			cout << "Do you want to order more from desserts? Y/N: ";
 			cin >> option_d;
 			if (option_d == 'N')
@@ -367,7 +260,7 @@ label:
 			orders[TotalOrders] = desserts[num - 1];
 			order_prices[TotalOrders] = dsrt_price[num - 1];
 			TotalOrders++;
-			bill += 100;
+			bill += dsrt_price[num - 1];
 			cout << "Do you want to order more from desserts? Y/N: ";
 			cin >> option_D;
 			if (option_D == 'N')
@@ -379,13 +272,14 @@ label:
 
 	}
 	system("cls");
-	cout << "------Your order has been placed------" << endl;
+	cout << "------Your order has been selected------" << endl;
 	do {
 		cout << "Press [1] to go to menu to order other items or [2] to checkout" << endl;
 		cin >> num;
 		if (num == 1)
 			goto label;
 		else if (num == 2) {
+			order();
 			billing();
 		}
 		else cout << "invalid input";
@@ -394,12 +288,22 @@ label:
 
 
 }
+void order()
+{
+	system("cls");
+	cout << "You have ordered the following items: " << endl;
+	for (int i = 0; i < TotalOrders; i++) {
+		cout << orders[i] << "----Rs." << order_prices[i] << endl;
+	}
 
+	cout << "Press [1] to confirm your order and proceed\n";
+	cin >> num;
+}
 
 
 void billing() {
 
-	order();
+	
 	system("cls");
 	float total = bill + (15.0 / 100 * bill);
 	if (num == 1) {
@@ -415,17 +319,8 @@ void billing() {
 
 
 }
-void order()
-{
-	system("cls");
-	cout << "You have ordered the following items: " << endl;
-	for (int i = 0; i < TotalOrders; i++) {
-		cout << orders[i] << "----Rs." << order_prices[i] << endl;
-	}
 
-	cout << "Press [1] to confirm your order and proceed\n";
-	cin >> num;
-}
+
 
 
 
