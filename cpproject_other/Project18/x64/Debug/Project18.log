@@ -1,4 +1,4 @@
 ﻿  source.cpp
-C:\Users\Mustafa\source\repos\Project18\Project18\source.cpp(47,7): warning C4101: 'admin_': unreferenced local variable
-C:\Users\Mustafa\source\repos\Project18\Project18\source.cpp(506,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  Project18.vcxproj -> C:\Users\Mustafa\source\repos\Project18\x64\Debug\Project18.exe
+C:\Users\Mustafa\source\repos\RMS\cpproject_other\Project18\source.cpp(47,7): warning C4101: 'admin_': unreferenced local variable
+C:\Users\Mustafa\source\repos\RMS\cpproject_other\Project18\source.cpp(506,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  Project18.vcxproj -> C:\Users\Mustafa\source\repos\RMS\cpproject_other\x64\Debug\Project18.exe

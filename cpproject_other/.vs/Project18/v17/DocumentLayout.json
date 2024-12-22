@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Mustafa\\source\\repos\\Project18\\",
+  "WorkspaceRootPath": "C:\\Users\\Mustafa\\source\\repos\\RMS\\cpproject_other\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{63288FD1-0AFB-40F3-ADEC-DB8C411F38E8}|Project18\\Project18.vcxproj|C:\\Users\\Mustafa\\source\\repos\\Project18\\Project18\\source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{63288FD1-0AFB-40F3-ADEC-DB8C411F38E8}|Project18\\Project18.vcxproj|C:\\Users\\Mustafa\\source\\repos\\RMS\\cpproject_other\\Project18\\source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{63288FD1-0AFB-40F3-ADEC-DB8C411F38E8}|Project18\\Project18.vcxproj|solutionrelative:Project18\\source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -20,11 +20,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "source.cpp",
-              "DocumentMoniker": "C:\\Users\\Mustafa\\source\\repos\\Project18\\Project18\\source.cpp",
+              "DocumentMoniker": "C:\\Users\\Mustafa\\source\\repos\\RMS\\cpproject_other\\Project18\\source.cpp",
               "RelativeDocumentMoniker": "Project18\\source.cpp",
-              "ToolTip": "C:\\Users\\Mustafa\\source\\repos\\Project18\\Project18\\source.cpp",
+              "ToolTip": "C:\\Users\\Mustafa\\source\\repos\\RMS\\cpproject_other\\Project18\\source.cpp",
               "RelativeToolTip": "Project18\\source.cpp",
-              "ViewState": "AgIAABYCAAAAAAAAAAAqwCACAAACAAAAAAAAAA==",
+              "ViewState": "AgIAANgBAAAAAAAAAAAAACACAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-22T10:48:21.978Z",
               "EditorCaption": ""
