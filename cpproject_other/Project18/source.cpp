@@ -5,6 +5,7 @@
 #include <fstream>
 #include <ctime>
 #include <windows.h>
+
 using namespace std;
 void menu_order_bill();
 void login();
@@ -47,7 +48,12 @@ void login() {
 	bool admin_;
 beginning:
 	system("cls");
-	cout << "Press 1 to signup\nPress 2 to login\nPress 3 for admin: ";
+	cout << " ____________________________________________________________________________________\n";
+	cout << "|                                                                                    |\n";
+	cout << "|                         Restaurant Management System                               |\n";
+	cout << "||\n";
+	cout << endl;
+	cout << "Press [1] to SignUp\nPress [2] to login\nPress [3] for Admin: ";
 
 	cin >> number;
 	ofstream file1;
@@ -561,9 +567,3 @@ void admin()
 	billfilee.close();
 
 }
-
-
-
-
-
-
