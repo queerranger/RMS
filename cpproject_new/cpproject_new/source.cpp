@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <fstream>
 #include <ctime>
+#include <windows.h>
 using namespace std;
 void menu_order_bill();
 void login();
@@ -97,6 +98,7 @@ void login() {
 				if (key_entered == filekey)
 				{
 					cout << "\nSuccess!";
+					Sleep(2000);
 					while (approve != 'y')
 					{
 						cout << " Press y to proceed:\n";

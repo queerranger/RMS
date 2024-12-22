@@ -1,5 +1,5 @@
 ﻿  source.cpp
-C:\Users\Mustafa\source\repos\RMS\cpproject_new\cpproject_new\source.cpp(54,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\Mustafa\source\repos\RMS\cpproject_new\cpproject_new\source.cpp(36,6): warning C4101: 'newpass': unreferenced local variable
-C:\Users\Mustafa\source\repos\RMS\cpproject_new\cpproject_new\source.cpp(523,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Mustafa\source\repos\RMS\cpproject_new\cpproject_new\source.cpp(55,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Mustafa\source\repos\RMS\cpproject_new\cpproject_new\source.cpp(37,6): warning C4101: 'newpass': unreferenced local variable
+C:\Users\Mustafa\source\repos\RMS\cpproject_new\cpproject_new\source.cpp(525,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   cpproject_new.vcxproj -> C:\Users\Mustafa\source\repos\RMS\cpproject_new\x64\Debug\cpproject_new.exe
