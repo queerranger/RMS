@@ -18,11 +18,11 @@ int TotalOrders = 0;
 int num;
 
 int main() {
-	
+
 	int continuee;
 	do
 	{
-		
+
 		login();
 
 		system("cls");
@@ -66,7 +66,7 @@ beginning:
 			if (newusername == fileusernames) {
 				cout << "\nThis username is already taken, choose another username\n";
 				cout << "Enter username: ";
-				
+
 				UsernameAvailable = false;
 				file3.close();
 			}
@@ -91,7 +91,7 @@ beginning:
 		cout << "Enter password:";
 		cin >> password;
 		file2.open("DataFile.txt");
-		
+
 		while (file2 >> fileusernames >> filepasswords) {
 			if (username == fileusernames && password == filepasswords) {
 				file2.close();
@@ -117,12 +117,12 @@ beginning:
 		string entered_password;
 		char backk;
 		do {
-		cout << "\nusername: ";
-		cin >> entered_username;
-		cout << "\npassword: ";
-		cin >> entered_password;
+			cout << "\nusername: ";
+			cin >> entered_username;
+			cout << "\npassword: ";
+			cin >> entered_password;
 
-		
+
 			if (entered_username == adminusername && entered_password == adminpassword)
 			{
 				admin();
@@ -137,10 +137,10 @@ beginning:
 
 			if (backk == 'q' || backk == 'Q')
 				goto beginning;
-			
+
 		} while (entered_username != adminusername || entered_password != adminpassword);
-			
-		
+
+
 
 
 
@@ -486,6 +486,17 @@ void order()
 	for (int i = 0; i < TotalOrders; i++) {
 		cout << orders[i] << "----Rs." << order_prices[i] << endl;
 	}
+	ofstream save_items;
+	save_items.open("itemsold.txt", ios::app);
+	if (save_items.is_open())
+	{
+		for (int i = 0; i < TotalOrders; i++) {
+			save_items << orders[i] << endl;
+		}
+		save_items.close();
+	}
+	else
+		cout << "\nFailed to save items.\n";
 	do
 	{
 		cout << "Press [1] to confirm your order and proceed\n";
@@ -520,6 +531,7 @@ void billing() {
 	if (billfile.is_open())
 	{
 		billfile << total << endl;
+		billfile.close();
 	}
 	else
 	{
@@ -546,6 +558,7 @@ void admin()
 		cout << "\nPress Y to return";
 		cin >> go;
 	} while (go != 'Y');
+	billfilee.close();
 
 }
 
