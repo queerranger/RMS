@@ -206,8 +206,11 @@ label:
 		}
 		char option_a;
 		do {
-			cout << "\nEnter index: ";
-			cin >> num;
+			do {
+				cout << "\nEnter index: ";
+				cin >> num;
+			} while (num > appt_size || num < 1);
+
 			orders[TotalOrders] = appetizer[num - 1];
 			order_prices[TotalOrders] = apt_price[num - 1];
 			TotalOrders++;
@@ -237,8 +240,10 @@ label:
 		}
 		char option_A;
 		do {
-			cout << "\nEnter index: ";
-			cin >> num;
+			do {
+				cout << "\nEnter index: ";
+				cin >> num;
+			} while (num > appt_size || num < 1);
 			orders[TotalOrders] = appetizer[num - 1];
 			order_prices[TotalOrders] = apt_price[num - 1];
 			TotalOrders++;
@@ -266,8 +271,11 @@ label:
 		}
 		char option_s;
 		do {
-			cout << "\nEnter index: ";
-			cin >> num;
+			do {
+				cout << "\nEnter index: ";
+				cin >> num;
+			}while(num > soup_size || num < 1);
+
 			orders[TotalOrders] = soups[num - 1];
 			order_prices[TotalOrders] = soup_price[num - 1];
 			TotalOrders++;
@@ -297,8 +305,12 @@ label:
 		}
 		char option_S;
 		do {
-			cout << "\nEnter index: ";
-			cin >> num;
+			do
+			{
+				cout << "\nEnter index: ";
+				cin >> num;
+			} while (num > soup_size || num < 1);
+
 			orders[TotalOrders] = soups[num - 1];
 			order_prices[TotalOrders] = soup_price[num - 1];
 			TotalOrders++;
@@ -331,8 +343,10 @@ label:
 		char option_m;
 
 		do {
-			cout << "\nEnter index: ";
-			cin >> num;
+			do {
+				cout << "\nEnter index: ";
+				cin >> num;
+			}while (num > mainc_size || num < 1);
 			orders[TotalOrders] = maincourse[num - 1];
 			order_prices[TotalOrders] = { mainc_price[num - 1] };
 			TotalOrders++;
@@ -363,8 +377,11 @@ label:
 		char option_M;
 
 		do {
-			cout << "\nEnter index: ";
-			cin >> num;
+			do
+			{
+				cout << "\nEnter index: ";
+				cin >> num;
+			}while (num > mainc_size || num < 1);
 			orders[TotalOrders] = maincourse[num - 1];
 			order_prices[TotalOrders] = { mainc_price[num - 1] };
 			TotalOrders++;
@@ -394,8 +411,11 @@ label:
 		}
 		char option_d;
 		do {
-			cout << "\nEnter index: ";
-			cin >> num;
+			do
+			{
+				cout << "\nEnter index: ";
+				cin >> num;
+			}while (num > dsrt_size || num < 1);
 			orders[TotalOrders] = desserts[num - 1];
 			order_prices[TotalOrders] = dsrt_price[num - 1];
 			TotalOrders++;
@@ -425,8 +445,10 @@ label:
 		}
 		char option_D;
 		do {
-			cout << "\nEnter index: ";
-			cin >> num;
+			do {
+				cout << "\nEnter index: ";
+				cin >> num;
+			}while (num > dsrt_size || num < 1);
 			orders[TotalOrders] = desserts[num - 1];
 			order_prices[TotalOrders] = dsrt_price[num - 1];
 			TotalOrders++;
