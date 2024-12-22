@@ -7,9 +7,10 @@
 #include <windows.h>
 using namespace std;
 void menu_order_bill();
-void login();
+string login();
 void billing();
 void order();
+void admin();
 string orders[20];
 int order_prices[20];
 int bill;
@@ -20,7 +21,14 @@ int main() {
 	int continuee;
 	do 
 	{
-		login();
+		string key;
+		key=login();
+		if (key == "2005")
+		{
+			admin();
+			break;
+		}
+
 		system("cls");
 		menu_order_bill();
 		cout << "\nPress 1 to go to start.\nPress anyother button to quit.";
@@ -32,7 +40,7 @@ int main() {
 
 }
 
-void login() {
+string login() {
 	int num;
 	int newpass;
 	int option;
@@ -163,7 +171,11 @@ void login() {
 
 
 		file2.close();
-		
+		if (key_entered == "2005" && key_entered == filekey)
+			return key_entered;
+
+		else
+			return key_entered;
 	}
 }
 void menu_order_bill()
@@ -533,8 +545,32 @@ void billing() {
 
 
 	}
+	ofstream billfile;
+	billfile.open("sales.txt", ios::app);
+
+	if(billfile.is_open())
+	{
+		billfile << total << endl;
+	}
+	else
+	{
+		cout << "\nBill save: not recorded";
+	}
 
 
+}
+
+void admin()
+{
+	ifstream billfilee;
+	billfilee.open("sales.txt");
+	int sales;
+	int total_sales=0;
+	while (billfilee >> sales)
+	{
+		total_sales += sales;
+	}
+	cout << "\nTotal sales: " << total_sales;
 }
 
 
