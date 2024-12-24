@@ -7,6 +7,7 @@
 #include <windows.h>
 
 using namespace std;
+void casefunction(int size, string items[], int itemprices[]);
 void menu_order_bill();
 void login();
 void billing();
@@ -73,8 +74,8 @@ beginning:
 		bool UsernameAvailable = true;
 		while (file3 >> fileusernames >> filepasswords) {
 			if (newusername == fileusernames) {
-		cout << "\n            This username is already taken, choose another username\n";
-		cout << "                        Enter username: ";
+				cout << "\n            This username is already taken, choose another username\n";
+				cout << "                        Enter username: ";
 
 				UsernameAvailable = false;
 				file3.close();
@@ -97,7 +98,7 @@ beginning:
 		cout << " ____________________________________________________________________________________\n";
 		cout << "|                                                                                    |\n";
 		cout << "|--------------------------------------LOGIN-----------------------------------------|\n";
-		
+
 	label1:	cout << "                    Enter the username:";
 		cin >> username;
 		cout << "                        Enter password:";
@@ -107,7 +108,7 @@ beginning:
 		while (file2 >> fileusernames >> filepasswords) {
 			if (username == fileusernames && password == filepasswords) {
 				file2.close();
-		cout << "\n                      logged in successfully\n";
+				cout << "\n                      logged in successfully\n";
 				Sleep(2000);
 				found = true;
 				break;
@@ -116,7 +117,7 @@ beginning:
 		}
 
 		if (found == false) {
-		cout << "                        invalid username or password try again\n";
+			cout << "                        invalid username or password try again\n";
 			file2.close();
 			goto label1;
 		}
@@ -202,35 +203,7 @@ label:
 		cout << "|                                                                                    |\n";
 		cout << "|--------------------------------------MENU------------------------------------------|\n";
 		cout << "|----------------------------------[Appetizers]--------------------------------------|\n" << endl;
-		for (int i = 0; i < appt_size; i++)
-		{
-
-		cout << "                      "<<appetizer[i] << "    Rs." << apt_price[i] << "(Press [" << i + 1 << "] to order)";
-			cout << endl;
-
-		}
-		char option_a;
-		do {
-			do {
-		cout << "\n                                 Enter index: ";
-				cin >> num;
-			} while (num > appt_size || num < 1);
-
-			orders[TotalOrders] = appetizer[num - 1];
-			order_prices[TotalOrders] = apt_price[num - 1];
-			TotalOrders++;
-			bill += apt_price[num - 1];
-			do {
-		cout << "                   Do you want to order more from appetizers? Y/N: ";
-				cin >> option_a;
-
-
-				if (option_a != 'N' && option_a != 'Y')
-		cout << "\n                            Only enter Y or N\n";
-			} while (option_a != 'N' && option_a != 'Y');
-			if (option_a == 'N')
-				break;
-		} while (option_a == 'Y');
+		casefunction(appt_size, appetizer, apt_price);
 
 		break;
 	case 'A':
@@ -239,70 +212,19 @@ label:
 		cout << "|                                                                                    |\n";
 		cout << "|--------------------------------------MENU------------------------------------------|\n";
 		cout << "|----------------------------------[Appetizers]--------------------------------------|\n" << endl;
-		for (int i = 0; i < appt_size; i++)
-		{
-
-		cout << "                      "<<appetizer[i] << "    Rs." << apt_price[i] << "(Press [" << i + 1 << "] to order)";
-			cout << endl;
-
-		}
-		char option_A;
-		do {
-			do {
-		cout << "\n                                Enter index: ";
-				cin >> num;
-			} while (num > appt_size || num < 1);
-			orders[TotalOrders] = appetizer[num - 1];
-			order_prices[TotalOrders] = apt_price[num - 1];
-			TotalOrders++;
-			bill += apt_price[num - 1];
-			do {
-		cout << "                  Do you want to order more from appetizers? Y/N: ";
-				cin >> option_A;
+		casefunction(appt_size, appetizer, apt_price);
 
 
-				if (option_A != 'N' && option_A != 'Y')
-		cout << "\n                            Only enter Y or N\n";
-			} while (option_A != 'N' && option_A != 'Y');
-			if (option_A == 'N')
-				break;
-		} while (option_A == 'Y');
 
 		break;
 	case 'b':
 		system("cls");
-		
+
 		cout << " ____________________________________________________________________________________\n";
 		cout << "|                                                                                    |\n";
 		cout << "|--------------------------------------MENU------------------------------------------|\n";
 		cout << "|-------------------------------------[SOUPS]----------------------------------------|\n" << endl;
-		for (int i = 0; i < soup_size; i++)
-		{
-		cout << "                            " << soups[i] << "    Rs." << soup_price[i] << " (Press [" << i + 1 << "] to order)";
-			cout << endl;
-		}
-		char option_s;
-		do {
-			do {
-		cout << "\n                                Enter index: ";
-				cin >> num;
-			} while (num > soup_size || num < 1);
-
-			orders[TotalOrders] = soups[num - 1];
-			order_prices[TotalOrders] = soup_price[num - 1];
-			TotalOrders++;
-			bill += soup_price[num - 1];
-			do {
-		cout << "                  Do you want to order more from maincourse? Y/N: ";
-				cin >> option_s;
-
-
-				if (option_s != 'N' && option_s != 'Y')
-		cout << "\n                           Only enter Y or N\n";
-			} while (option_s != 'N' && option_s != 'Y');
-			if (option_s == 'N')
-				break;
-		} while (option_s == 'Y');
+		casefunction(soup_size, soups, soup_price);
 
 
 
@@ -313,36 +235,7 @@ label:
 		cout << "|                                                                                    |\n";
 		cout << "|--------------------------------------MENU------------------------------------------|\n";
 		cout << "|-------------------------------------[SOUPS]----------------------------------------|\n" << endl;
-		for (int i = 0; i < soup_size; i++)
-		{
-		cout << "                          "<<soups[i] << "    Rs." << soup_price[i] << " (Press [" << i + 1 << "] to order)";
-			cout << endl;
-		}
-		char option_S;
-		do {
-			do
-			{
-				cout << "\n                         Enter index: ";
-				cin >> num;
-			} while (num > soup_size || num < 1);
-
-			orders[TotalOrders] = soups[num - 1];
-			order_prices[TotalOrders] = soup_price[num - 1];
-			TotalOrders++;
-			bill += soup_price[num - 1];
-			do {
-				cout << "         Do you want to order more from maincourse? Y/N: ";
-				cin >> option_S;
-
-
-				if (option_S != 'N' && option_S != 'Y')
-			    cout << "\n                     Only enter Y or N\n";
-			} while (option_S != 'N' && option_S != 'Y');
-			if (option_S == 'N')
-				break;
-		} while (option_S == 'Y');
-
-
+		casefunction(soup_size, soups, soup_price);
 
 		break;
 
@@ -352,35 +245,7 @@ label:
 		cout << "|                                                                                    |\n";
 		cout << "|--------------------------------------MENU------------------------------------------|\n";
 		cout << "|----------------------------------[MAINCOURSE]--------------------------------------|\n" << endl;
-		for (int i = 0; i < mainc_size; i++)
-		{
-		cout << "                         " << maincourse[i] << "    Rs." << mainc_price[i] << " (Press [" << i + 1 << "] to order)";
-			cout << endl;
-		}
-
-		char option_m;
-
-		do {
-			do {
-		cout << "\n                                Enter index: ";
-				cin >> num;
-			} while (num > mainc_size || num < 1);
-			orders[TotalOrders] = maincourse[num - 1];
-			order_prices[TotalOrders] = { mainc_price[num - 1] };
-			TotalOrders++;
-			bill += mainc_price[num - 1];
-			do {
-		cout << "                    Do you want to order more from maincourse? Y/N: ";
-				cin >> option_m;
-
-
-				if (option_m != 'N' && option_m != 'Y')
-		cout << "\n                            Only enter Y or N\n";
-			} while (option_m != 'N' && option_m != 'Y');
-			if (option_m == 'N')
-				break;
-		} while (option_m == 'Y');
-
+		casefunction(mainc_size, maincourse, mainc_price);
 
 		break;
 	case 'C':
@@ -389,36 +254,7 @@ label:
 		cout << "|                                                                                    |\n";
 		cout << "|--------------------------------------MENU------------------------------------------|\n";
 		cout << "|----------------------------------[MAINCOURSE]--------------------------------------|\n" << endl;
-		for (int i = 0; i < mainc_size; i++)
-		{
-		cout << "                       " << maincourse[i] << "    Rs." << mainc_price[i] << " (Press [" << i + 1 << "] to order)";
-			cout << endl;
-		}
-
-		char option_M;
-
-		do {
-			do
-			{
-		cout << "\n                               Enter index: ";
-				cin >> num;
-			} while (num > mainc_size || num < 1);
-			orders[TotalOrders] = maincourse[num - 1];
-			order_prices[TotalOrders] = { mainc_price[num - 1] };
-			TotalOrders++;
-			bill += mainc_price[num - 1];
-			do {
-		cout << "                   Do you want to order more from maincourse? Y/N: ";
-				cin >> option_M;
-
-
-				if (option_M != 'N' && option_M != 'Y')
-		cout << "\n                             Only enter Y or N\n";
-			} while (option_M != 'N' && option_M != 'Y');
-			if (option_M == 'N')
-				break;
-		} while (option_M == 'Y');
-
+		casefunction(mainc_size, maincourse, mainc_price);
 
 		break;
 
@@ -428,35 +264,7 @@ label:
 		cout << "|                                                                                    |\n";
 		cout << "|--------------------------------------MENU------------------------------------------|\n";
 		cout << "|-----------------------------------[DESSERTS]---------------------------------------|\n" << endl;
-		for (int i = 0; i < dsrt_size; i++)
-		{
-		cout << "                          " << desserts[i] << "    Rs." << dsrt_price[i] << " (Press [" << i + 1 << "] to order)";
-			cout << endl;
-		}
-		char option_d;
-		do {
-			do
-			{
-		cout << "\n                                Enter index: ";
-				cin >> num;
-			} while (num > dsrt_size || num < 1);
-			orders[TotalOrders] = desserts[num - 1];
-			order_prices[TotalOrders] = dsrt_price[num - 1];
-			TotalOrders++;
-			bill += dsrt_price[num - 1];
-			do {
-		cout << "                    Do you want to order more from desserts? Y/N: ";
-				cin >> option_d;
-
-
-
-				if (option_d != 'N' && option_d != 'Y')
-		cout << "\n                            Only enter Y or N\n";
-			} while (option_d != 'N' && option_d != 'Y');
-			if (option_d == 'N')
-				break;
-		} while (option_d == 'Y');
-
+		casefunction(dsrt_size, desserts, dsrt_price);
 
 		break;
 	case 'D':
@@ -465,36 +273,7 @@ label:
 		cout << "|                                                                                    |\n";
 		cout << "|--------------------------------------MENU------------------------------------------|\n";
 		cout << "|-----------------------------------[DESSERTS]---------------------------------------|\n" << endl;
-		for (int i = 0; i < dsrt_size; i++)
-		{
-		cout << "                          " << desserts[i] << "    Rs." << dsrt_price[i] << " (Press [" << i + 1 << "] to order)";
-			cout << endl;
-		}
-		char option_D;
-		do {
-			do {
-		cout << "\n                                Enter index: ";
-				cin >> num;
-			} while (num > dsrt_size || num < 1);
-			orders[TotalOrders] = desserts[num - 1];
-			order_prices[TotalOrders] = dsrt_price[num - 1];
-			TotalOrders++;
-			bill += dsrt_price[num - 1];
-			do {
-		cout << "                    Do you want to order more from desserts? Y/N: ";
-				cin >> option_D;
-
-
-				if (option_D != 'N' && option_D != 'Y')
-		cout << "\n                            Only enter Y or N\n";
-			} while (option_D != 'N' && option_D != 'Y');
-			if (option_D == 'N')
-				break;
-		} while (option_D == 'Y');
-
-
-
-
+		casefunction(dsrt_size, desserts, dsrt_price);
 		break;
 
 	default:
@@ -508,7 +287,7 @@ label:
 	system("cls");
 	cout << "----------------------------Your order has been selected--------------------------" << endl;
 	do {
-	cout << "          Press [1] to go to menu to order other items or [2] to checkout" << endl;
+		cout << "          Press [1] to go to menu to order other items or [2] to checkout" << endl;
 		cin >> num;
 		if (num == 1)
 			goto label;
@@ -517,8 +296,8 @@ label:
 			order();
 			billing();
 		}
-		else 
-	cout << "\n                               invalid input\n";
+		else
+			cout << "\n                               invalid input\n";
 	} while (num != 1 && num != 2);
 
 
@@ -532,7 +311,7 @@ void order()
 	cout << "|--------------------------------------CART------------------------------------------|\n";
 	cout << "                        You have ordered the following items: " << endl;
 	for (int i = 0; i < TotalOrders; i++) {
-	cout << "                        " << orders[i] << "----Rs." << order_prices[i] << endl;
+		cout << "                        " << orders[i] << "----Rs." << order_prices[i] << endl;
 	}
 	ofstream save_items;
 	save_items.open("itemsold.txt", ios::app);
@@ -544,10 +323,10 @@ void order()
 		save_items.close();
 	}
 	else
-	cout << "\n                           Failed to save items.\n";
+		cout << "\n                           Failed to save items.\n";
 	do
 	{
-	cout << "                    Press [1] to confirm your order and proceed\n";
+		cout << "                    Press [1] to confirm your order and proceed\n";
 		cin >> num;
 
 		if (num == 1)
@@ -568,32 +347,32 @@ void billing() {
 		cout << "|                                                                                    |\n";
 		cout << "|--------------------------------------BILL------------------------------------------|\n";
 		for (int i = 0; i < TotalOrders; i++) {
-			cout << "                       " << orders[i] << "-------Rs." << order_prices[i] << endl;
+			cout << "                       " << setw(20) << left << orders[i] << setw(10) << right << "Rs." << order_prices[i] << endl;
 		}
-			cout << "                       cost: " << "Rs. " << bill << endl;
-			cout << "                       The tax is 15%" << endl;
-			cout << "                       Your total bill with tax is: " << endl;
-			cout << "                       BILL = " << "Rs " << total << ".00";
-			cout << endl;
-			cout << "--------------------------------THANKS FOR ORDERING-----------------------------------";
-
-
-		}
-		ofstream billfile;
-		billfile.open("sales.txt", ios::app);
-
-		if (billfile.is_open())
-		{
-			billfile << total << endl;
-			billfile.close();
-		}
-		else
-		{
-			cout << "\nBill save: not recorded";
-		}
+		cout << "                       cost: " << "Rs. " << bill << endl;
+		cout << "                       The tax is 15%" << endl;
+		cout << "                       Your total bill with tax is: " << endl;
+		cout << "                       BILL = " << "Rs " << total << ".00";
+		cout << endl;
+		cout << "--------------------------------THANKS FOR ORDERING-----------------------------------";
 
 
 	}
+	ofstream billfile;
+	billfile.open("sales.txt", ios::app);
+
+	if (billfile.is_open())
+	{
+		billfile << total << endl;
+		billfile.close();
+	}
+	else
+	{
+		cout << "\nBill save: not recorded";
+	}
+
+
+}
 
 
 void admin()
@@ -601,18 +380,65 @@ void admin()
 	char go;
 	ifstream billfilee;
 	billfilee.open("sales.txt");
-	int sales;
-	int total_sales = 0;
-	while (billfilee >> sales)
+	float sales;
+	float total_sales = 0;
+	if (billfilee.is_open())
 	{
-		total_sales += sales;
+		while (billfilee >> sales)
+		{
+			total_sales += sales;
+		}
+		cout << "\nTotal sales: " << total_sales;
+		do
+		{
+			cout << "\nPress Y to return";
+			cin >> go;
+		} while (go != 'Y');
+		billfilee.close();
 	}
-	cout << "\nTotal sales: " << total_sales;
-	do
+	else
 	{
-		cout << "\nPress Y to return";
-		cin >> go;
-	} while (go != 'Y');
-	billfilee.close();
+		cout << "\nCouldnt open file.";
+	}
 
 }
+
+
+void casefunction(int size, string items[], int itemprices[])
+{
+	/*for (int i = 0; i < size; i++)
+	{
+
+		cout << "                      " << setw(5) << items[i] <<setw(10)<< "Rs." << itemprices[i] << "(Press [" << i + 1 << "] to order)";
+		cout << endl;
+
+	}*/
+	for (int i = 0; i < size; i++) {
+
+		cout << "            " << setw(20) << left << items[i]
+			<< "Rs." << setw(5) << right << itemprices[i]
+			<< "  (Press [" << i + 1 << "] to order)" << endl;
+	}
+	char option;
+	do {
+		do {
+			cout << "\n                                 Enter index: ";
+			cin >> num;
+		} while (num > size || num < 1);
+
+		orders[TotalOrders] = items[num - 1];
+		order_prices[TotalOrders] = itemprices[num - 1];
+		TotalOrders++;
+		bill += itemprices[num - 1];
+		do {
+			cout << "                   Do you want to order more from appetizers? Y/N: ";
+			cin >> option;
+
+
+			if (option != 'N' && option != 'Y')
+				cout << "\n                            Only enter Y or N\n";
+		} while (option != 'N' && option != 'Y');
+		if (option == 'N')
+			break;
+	} while (option == 'Y');
+}//rms
