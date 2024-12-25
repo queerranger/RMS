@@ -432,7 +432,7 @@ void casefunction(int size, string items[], int itemprices[])
 		TotalOrders++;
 		bill += itemprices[num - 1];
 		do {
-			cout << "                   Do you want to order more from appetizers? Y/N: ";
+			cout << "                   Do you want to order more from this? Y/N: ";
 			cin >> option;
 
 
