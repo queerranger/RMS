@@ -68,7 +68,7 @@ beginning:
 		cout << " ____________________________________________________________________________________\n";
 		cout << "|                                                                                    |\n";
 		cout << "|------------------------------------SIGN UP-----------------------------------------|\n";
-		cout << "                        Enter username: ";
+		cout << "                        Enter username(single word): ";
 	label5:	cin >> newusername;
 		file3.open("DataFile.txt");
 		bool UsernameAvailable = true;
@@ -124,7 +124,7 @@ beginning:
 		break;
 	case 3:
 		system("cls");
-		string adminusername = "ranger";
+		string adminusername = "mustafa008";
 		string adminpassword = "cplusplus";
 		string entered_username;
 		string entered_password;
@@ -180,6 +180,7 @@ void menu_order_bill()
 	int soup_price[4] = { 100,200,300,400 };
 	int mainc_price[4] = { 100,200,300,500 };
 	int dsrt_price[4] = { 100,200,150,300 };
+
 
 label:
 	system("cls");
