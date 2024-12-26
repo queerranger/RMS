@@ -1,0 +1,4 @@
+Team members: Ali, Mustafa, Kamran.
+Managing a restaurant can be quiet hectic, provided that you do not use the marvels of technology. Therefore,
+ to tackle certain aspects of problems arising in a restaurant,
+ we have developed a restaurant management system for assistance.
