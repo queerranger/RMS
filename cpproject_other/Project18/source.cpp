@@ -192,7 +192,7 @@ label:
 	cout << "|                               [B] for Soups                                        |" << endl;
 	cout << "|                               [C] for MainCourse]                                  |" << endl;
 	cout << "|                               [D]for  Desserts                                     |" << endl;
-	cout << "|                               [E] for About                                        |" << endl;
+	
 	char option;
 	cin >> option;
 
@@ -278,38 +278,11 @@ label:
 		casefunction(dsrt_size, desserts, dsrt_price);
 		break;
 
-	case 'E': {
-		char optionE;
-		system("cls");
-		ofstream writeabout;
-		writeabout.open("about.txt");
-		if (writeabout.is_open())
-		{
-			writeabout << "Team members: Ali, Mustafa, Kamran.\nManaging a restaurant can be quiet hectic, provided that you do not use the marvels of technology. Therefore,\n to tackle certain aspects of problems arising in a restaurant,\n we have developed a restaurant management system for assistance.\n";
-			writeabout.close();
-		}
-		else
-			cout << "\nFile couldnt be opened";
-
-		string readnote;
-		ifstream readabout;
-		readabout.open("about.txt");
-		while (readabout >> readnote)
-		{
-		cout << readnote << " ";
-		}
-		Sleep(5000);
-		cout << "\nDo you want to go further? Enter Y";
-		cin >> optionE;
-		if (optionE == 'Y')
-			break;
-		
-
-	}
+	
 		
 
 	default:
-		if (option != 'a' && option != 'A' && option != 'b' && option != 'B' && option != 'c' && option != 'C' && option != 'd' && option != 'D'&& option != 'E') {
+		if (option != 'a' && option != 'A' && option != 'b' && option != 'B' && option != 'c' && option != 'C' && option != 'd' && option != 'D') {
 			cout << "\nInvalid Input.";
 			goto label;
 		}
